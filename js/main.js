@@ -4,6 +4,16 @@ const app = new Vue({
 
     data:{
         arrEmail: [],
+
+        length: 20,
+    },
+
+    computed: {
+
+        createdOk(){
+
+            return (this.arrEmail.length == this.length) ? true : false;
+        }
     },
 
     created(){
@@ -11,11 +21,12 @@ const app = new Vue({
 
         this.createEmail();
     },
+
     methods: {
 
         createEmail(){
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < this.length; i++) {
 
                 axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 
@@ -23,7 +34,10 @@ const app = new Vue({
         
                     this.arrEmail.push(result.data.response);
 
-                    console.log(this.arrEmail);
+                })
+                .catch( error =>{
+
+                    this.arrEmail.push('errore durante la creazione');
                 })
 
             }
@@ -31,8 +45,6 @@ const app = new Vue({
         },
 
     },
-
-
 })
 
 // https://flynn.boolean.careers/exercises/api/random/mail
