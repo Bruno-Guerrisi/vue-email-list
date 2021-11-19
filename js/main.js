@@ -5,7 +5,7 @@ const app = new Vue({
     data:{
 
         arrEmail: [],
-        length: 20,
+        length: 10,
     },
 
     computed: {
@@ -28,7 +28,7 @@ const app = new Vue({
             for (let i = 0; i < this.length; i++) {
 
                 axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-                
+
                 .then( result =>{
 
                     this.arrEmail.push(result.data.response);
