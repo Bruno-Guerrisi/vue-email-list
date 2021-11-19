@@ -3,8 +3,8 @@ const app = new Vue({
     el: '#app',
 
     data:{
-        arrEmail: [],
 
+        arrEmail: [],
         length: 20,
     },
 
@@ -13,11 +13,10 @@ const app = new Vue({
         createdOk(){
 
             return (this.arrEmail.length == this.length) ? true : false;
-        }
+        },
     },
 
     created(){
-
 
         this.createEmail();
     },
@@ -31,9 +30,8 @@ const app = new Vue({
                 axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 
                 .then( result =>{
-        
-                    this.arrEmail.push(result.data.response);
 
+                    this.arrEmail.push(result.data.response);
                 })
                 .catch( error =>{
 
@@ -46,5 +44,3 @@ const app = new Vue({
 
     },
 })
-
-// https://flynn.boolean.careers/exercises/api/random/mail
